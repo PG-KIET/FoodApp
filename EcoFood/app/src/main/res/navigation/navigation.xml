@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/homeFragment3">
+
+
     <fragment
         android:id="@+id/homeFragment3"
         android:name="com.example.ecofood.Fragment.HomeFragment"
@@ -29,4 +31,5 @@
         android:name="com.example.ecofood.Fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
 </navigation>

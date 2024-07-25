@@ -3,7 +3,7 @@ package com.example.ecofood.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ecofood.databinding.PopularItemBinding
+import com.example.ecofood.databinding.PopulerItemBinding
 
 
 
@@ -14,7 +14,7 @@ class PopularAdapter(
 ) : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularViewHolder {
-        return PopularViewHolder(PopularItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return PopularViewHolder(PopulerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
@@ -28,12 +28,12 @@ class PopularAdapter(
         return items.size
     }
 
-    class PopularViewHolder(private val binding: PopularItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PopularViewHolder(private val binding: PopulerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private val imagesView = binding.imageView3
 
         fun bind(item: String, price: String, image: Int) {
-            binding.foodnamePopular.text = item
-            binding.PricePopular.text = price
+            binding.foodNamePopular.text = item
+            binding.pricePopular.text = price
             imagesView.setImageResource(image)
         }
     }
