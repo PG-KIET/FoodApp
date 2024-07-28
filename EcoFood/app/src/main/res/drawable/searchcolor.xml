@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="15dp"/> <!-- Điều chỉnh bán kính bo tròn -->
+    <solid android:color="#FFFFFF"/> <!-- Màu nền, bạn có thể thay đổi tùy ý -->
+    <stroke android:width="2dp" android:color="#CCCCCC"/>
+</shape>
