@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="145dp">
+    android:layout_height="138dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="369dp"
-        android:layout_height="125dp"
+        android:layout_height="115dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/textviewshape"
-        app:cardElevation="15dp"
         android:padding="15dp"
         app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +49,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="54dp"
-                android:fontFamily="@font/coolvetica_rg"
+                android:fontFamily="@font/coolvetica_condensed_rg"
                 android:gravity="center"
                 android:text="5$"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,10 +62,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:fontFamily="@font/amiko_semibold"
+                android:fontFamily="@font/coolvetica_condensed_rg"
                 android:text="Food Name"
                 android:textAlignment="center"
                 android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/ImagePopuler"
                 app:layout_constraintStart_toEndOf="@+id/ImagePopuler"
                 app:layout_constraintTop_toTopOf="@+id/ImagePopuler"
