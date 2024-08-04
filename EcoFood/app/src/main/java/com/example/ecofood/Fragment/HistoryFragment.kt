@@ -24,10 +24,20 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        setupRecentBuy()
         setupRecyclerView() // Gọi hàm setupRecyclerView ở đây
         return binding.root
     }
+    private fun setupRecentBuy() {
+        // Giả sử đây là món ăn gần nhất, bạn có thể thay đổi dữ liệu theo thực tế
+        val recentFoodName = "Food 1"
+        val recentFoodPrice = "5$"
+        val recentFoodImage = R.drawable.menu01
 
+        binding.buyAgainFoodName.text = recentFoodName
+        binding.buyAgainFoodPrice.text = recentFoodPrice
+        binding.buyAgainFoodImage.setImageResource(recentFoodImage)
+    }
     private fun setupRecyclerView() {
         val buyAgainFoodName = listOf("Food 1", "Food 2", "Food 3")
         val buyAgainFoodPrice = listOf("5$", "10$", "15$")
