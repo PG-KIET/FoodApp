@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/proceedButtonShape"
+        app:layout_constraintBottom_toTopOf="@+id/proceedButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/proceedButtonShape"
+        android:id="@+id/proceedButton"
         android:layout_width="270dp"
         android:layout_height="50dp"
         android:layout_marginBottom="18dp"
