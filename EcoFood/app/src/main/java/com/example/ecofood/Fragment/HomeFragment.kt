@@ -13,6 +13,7 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.ecofood.MenuBottomSheetFragment
 import com.example.ecofood.R
+import com.example.ecofood.adapter.MenuAdapter
 import com.example.ecofood.adapter.PopularAdapter
 import com.example.ecofood.databinding.FragmentHomeBinding
 
@@ -20,7 +21,33 @@ import com.example.ecofood.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter: MenuAdapter
+    private val originalMenuFoodName = listOf(
+        "Burger", "Sandwich", "Momo", "Item", "Sandwich", "Momo",
+        "Pizza", "Hot Dog", "Pasta", "Salad", "Sushi", "Taco"
+    )
+    private val originalMenuItemPrice = listOf(
+        "5$", "10$", "15$", "20$", "25$", "30$",
+        "12$", "8$", "18$", "9$", "22$", "6$"
+    )
+    private val originalMenuImage = listOf(
+        R.drawable.menu01,
+        R.drawable.menu02,
+        R.drawable.menu03,
+        R.drawable.menu04,
+        R.drawable.menu05,
+        R.drawable.menu06,
+        R.drawable.menu01,
+        R.drawable.menu02,
+        R.drawable.menu03,
+        R.drawable.menu04,
+        R.drawable.menu05,
+        R.drawable.menu06
+    )
 
+    private val filteredMenuFoodName = mutableListOf<String>()
+    private val filteredMenuItemPrice = mutableListOf<String>()
+    private val filteredMenuImage = mutableListOf<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -60,12 +87,23 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(),itemMessage,Toast.LENGTH_SHORT).show()
             }
         })
-        val foodName = listOf("Burger","Pizza số 1","Pasta","Salad")
-        val Price = listOf("5$","10$","15$","20$")
-        val populerFoodImages = listOf(R.drawable.menu01,R.drawable.menu02,R.drawable.menu03,R.drawable.menu04)
-        val adapter = PopularAdapter(foodName,Price,populerFoodImages,requireContext())
+
+        adapter = MenuAdapter(
+            filteredMenuFoodName, filteredMenuItemPrice, filteredMenuImage,requireContext()
+        )
         binding.popularRecyclerView.layoutManager=LinearLayoutManager(requireContext())
         binding.popularRecyclerView.adapter=adapter
+        showAllMenu()
+    }
+    private fun showAllMenu() {
+        filteredMenuFoodName.clear()
+        filteredMenuItemPrice.clear()
+        filteredMenuImage.clear()
+
+        filteredMenuFoodName.addAll(originalMenuFoodName)
+        filteredMenuItemPrice.addAll(originalMenuItemPrice)
+        filteredMenuImage.addAll(originalMenuImage)
+        adapter.notifyDataSetChanged()
     }
     companion object {
 
