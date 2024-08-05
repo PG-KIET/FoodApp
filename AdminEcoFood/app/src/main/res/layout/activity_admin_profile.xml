@@ -75,12 +75,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="Name"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView12" />
 
@@ -88,12 +88,11 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="1"
-            
+            android:layout_weight="2"
             android:background="@android:color/transparent"
             android:fontFamily="@font/roboto_medium"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="TextView" />
 
     </LinearLayout>
@@ -116,13 +115,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
-            android:paddingStart="15dp"
             android:text="Address"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView12" />
 
@@ -130,13 +128,12 @@
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            
+            android:layout_weight="2"
             android:background="@android:color/transparent"
             android:fontFamily="@font/roboto_medium"
             android:inputType="textMultiLine"
-            android:padding="4dp"
-            android:text="TextVieffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffw" />
+            android:padding="5dp"
+            android:text="TextVieffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffw" />
 
     </LinearLayout>
 
@@ -157,12 +154,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="Email"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView12" />
 
@@ -170,12 +167,11 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="1"
-            
+            android:layout_weight="2"
             android:background="@android:color/transparent"
             android:fontFamily="@font/roboto_medium"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="TextView@gmail.com" />
 
     </LinearLayout>
@@ -197,12 +193,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="Phone"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView12" />
 
@@ -210,12 +206,11 @@
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="1"
-            
+            android:layout_weight="2"
             android:background="@android:color/transparent"
             android:fontFamily="@font/roboto_medium"
             android:inputType="phone"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="00000000" />
 
     </LinearLayout>
@@ -236,13 +231,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="Password"
             android:textColor="@color/black"
-            android:paddingStart="4dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView12" />
 
@@ -250,12 +244,11 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:layout_weight="1"
-            
+            android:layout_weight="2"
             android:background="@android:color/transparent"
             android:fontFamily="@font/roboto_medium"
             android:inputType="textPassword"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="TextView" />
 
     </LinearLayout>
