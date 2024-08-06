@@ -1,5 +1,6 @@
 package com.example.adminecofood
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,16 +11,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.adminecofood.databinding.ActivityLoginBinding
 import com.example.adminecofood.model.UserModel
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.identity.Identity
+import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var email: String
     private lateinit var password: String
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var oneTapClient: SignInClient
 
     private val binding: ActivityLoginBinding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
@@ -29,11 +37,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        // khởi tạo Firebase Auth
-        // khởi tạo Firebase database
-        auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance("https://food-app-0882024-default-rtdb.asia-southeast1.firebasedatabase.app").reference
 
+        // Khởi tạo Firebase Auth
+        auth = Firebase.auth
+        // Khởi tạo Firebase database
+        database = Firebase.database.reference
+        // Khởi tạo Google SignInClient
+        oneTapClient = Identity.getSignInClient(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -52,6 +62,10 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        binding.google.setOnClickListener {
+            signInWithGoogle()
+        }
+
         binding.dontHaveAcc.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
@@ -59,21 +73,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun createUserAccount(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{ task ->
-            if (task.isSuccessful){
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 val user = auth.currentUser
+                Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show()
                 updateUi(user)
-            }
-            else{
-                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{ task ->
-                    if (task.isSuccessful){
+            } else {
+                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
                         val user = auth.currentUser
+                        Toast.makeText(this, "Create User and Login Successfully", Toast.LENGTH_SHORT).show()
                         saveUserData()
                         updateUi(user)
-                    }
-                    else{
+                    } else {
                         Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
-                        Log.d( "Account", "CreateUserAccount: Authentication failed", task.exception)
+                        Log.d("Account", "CreateUserAccount: Authentication failed", task.exception)
                     }
                 }
             }
@@ -81,7 +95,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveUserData() {
-
         email = binding.email.text.toString().trim()
         password = binding.password.text.toString().trim()
 
@@ -97,11 +110,70 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun updateUi(user: FirebaseUser?) {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
+
+    private fun signInWithGoogle() {
+        val signInRequest = BeginSignInRequest.builder()
+            .setGoogleIdTokenRequestOptions(
+                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                    .setSupported(true)
+                    .setServerClientId(getString(R.string.google_app_id))
+                    .setFilterByAuthorizedAccounts(false)
+                    .build()
+            )
+            .build()
+
+        oneTapClient.beginSignIn(signInRequest)
+            .addOnSuccessListener { result ->
+                try {
+                    startIntentSenderForResult(
+                        result.pendingIntent.intentSender,
+                        RC_SIGN_IN,
+                        null,
+                        0,
+                        0,
+                        0,
+                        null
+                    )
+                } catch (e: Exception) {
+                    Log.e(TAG, "Google Sign-in failed", e)
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "Google Sign-in failed", e)
+            }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            if (resultCode == Activity.RESULT_OK) {
+                val credential = oneTapClient.getSignInCredentialFromIntent(data)
+                val idToken = credential.googleIdToken
+                if (idToken != null) {
+                    val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
+                    auth.signInWithCredential(firebaseCredential).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "Successfully sign-in with Google", Toast.LENGTH_SHORT).show()
+                            val user = auth.currentUser
+                            updateUi(user)
+                        } else {
+                            Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    companion object {
+        private const val RC_SIGN_IN = 9001
+        private const val TAG = "LoginActivity"
     }
 }
