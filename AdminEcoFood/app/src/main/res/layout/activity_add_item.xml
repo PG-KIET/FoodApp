@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="@+id/backButton" />
 
             <EditText
-                android:id="@+id/enterFoodName"
+                android:id="@+id/foodName"
                 android:layout_width="0dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="8dp"
@@ -65,7 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
             <EditText
-                android:id="@+id/enterFoodPrice"
+                android:id="@+id/foodPrice"
                 android:layout_width="0dp"
                 android:layout_height="57dp"
                 android:layout_marginTop="12dp"
@@ -75,10 +75,10 @@
                 android:inputType="text"
                 android:paddingLeft="15dp"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/enterFoodName"
+                app:layout_constraintEnd_toEndOf="@+id/foodName"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/enterFoodName"
-                app:layout_constraintTop_toBottomOf="@+id/enterFoodName" />
+                app:layout_constraintStart_toStartOf="@+id/foodName"
+                app:layout_constraintTop_toBottomOf="@+id/foodName" />
 
             <TextView
                 android:id="@+id/selectImage"
@@ -94,9 +94,9 @@
                 android:text="Select Image"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/enterFoodPrice"
-                app:layout_constraintStart_toStartOf="@+id/enterFoodPrice"
-                app:layout_constraintTop_toBottomOf="@+id/enterFoodPrice" />
+                app:layout_constraintEnd_toEndOf="@+id/foodPrice"
+                app:layout_constraintStart_toStartOf="@+id/foodPrice"
+                app:layout_constraintTop_toBottomOf="@+id/foodPrice" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView8"
@@ -137,20 +137,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView8" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
-                android:textSize="20sp"
-                android:padding="8dp"
+                android:background="@color/white"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Salad tươi mát với đủ loại rau củ, trái cây, kết hợp cùng sốt vinaigrette thanh nhẹ, là lựa chọn hoàn hảo cho những người yêu thích sự tươi ngon."
+                android:hint="Hãy nhập mô tả"
+                android:padding="8dp"
                 android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView13"
-                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.483"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -168,9 +168,9 @@
                 android:text="Ingredients"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/editText2"
-                app:layout_constraintStart_toStartOf="@+id/editText2"
-                app:layout_constraintTop_toBottomOf="@+id/editText2" />
+                app:layout_constraintEnd_toEndOf="@+id/description"
+                app:layout_constraintStart_toStartOf="@+id/description"
+                app:layout_constraintTop_toBottomOf="@+id/description" />
 
             <EditText
                 android:id="@+id/ingredient"
@@ -182,7 +182,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="• Noddle\n• Salad\n• Burger\n• Herbal Pan Cake\n• Momos"
+                android:hint="Hãy nhập nguyên liệu"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/textView14"
                 app:layout_constraintHorizontal_bias="0.03"
@@ -192,7 +192,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/AddItemButton"
                 android:layout_width="157dp"
-                android:layout_height="57dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/colorbutton3"
                 android:fontFamily="@font/roboto_bold"
