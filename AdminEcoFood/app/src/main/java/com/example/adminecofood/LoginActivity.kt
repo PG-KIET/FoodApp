@@ -1,6 +1,7 @@
 package com.example.adminecofood
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -39,14 +40,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        val gooleSignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.google_app_id)).requestEmail().build()
+
+        val googleSignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
         // khởi tạo Firebase Auth
         auth = Firebase.auth
         // khởi tạo Firebase database
         database = Firebase.database.reference
         // khởi tạo Google Sign In
-        googleSignInClient = GoogleSignIn.getClient(this, gooleSignInOption)
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOption)
 
 
 
@@ -69,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
         binding.google.setOnClickListener{
             val signIntent = googleSignInClient.signInIntent
 
-            launcer.launch(signIntent)
+            launcher.launch(signIntent)
         }
         binding.dontHaveAcc.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
@@ -120,24 +122,36 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-    private val launcer = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result ->
-        if (result.resultCode == Activity.RESULT_OK){
+    //launcher for google
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            if(task.isSuccessful){
-                val account : GoogleSignInAccount = task.result
-                val credential = GoogleAuthProvider.getCredential(account.idToken,null)
-                auth.signInWithCredential(credential).addOnCompleteListener{ authTask->
-                    if (authTask.isSuccessful){
-                        Toast.makeText(this, "Successfully  sign-in with Google ", Toast.LENGTH_SHORT).show()
-                    }
-                    else
-                    {
-                        Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
-                    }
-                }
+            if (task.isSuccessful) {
+                val account: GoogleSignInAccount = task.result
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
 
+                auth.signInWithCredential(credential)
+                    .addOnCompleteListener { authTask ->
+                        if (authTask.isSuccessful) {
+                            Toast.makeText(this, "Successfully signed in with Google", Toast.LENGTH_SHORT).show()
+                            updateUi(authTask.result?.user)
+                            finish()
+                        } else {
+                            Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            } else {
+                Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+    //check if user is already logged in
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser!=null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
     private fun updateUi(user: FirebaseUser?) {
