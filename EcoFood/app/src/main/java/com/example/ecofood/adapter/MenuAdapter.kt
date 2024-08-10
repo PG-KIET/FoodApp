@@ -2,20 +2,21 @@ package com.example.ecofood.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.ecofood.DetailsActivity
 import com.example.ecofood.databinding.MenuItemBinding
+import com.example.ecofood.model.MenuItem
 
 class MenuAdapter(
-    private val menuItemsName: MutableList<String>,
-    private val menuItemPrice: MutableList<String>,
-    private val MenuImage: MutableList<Int>,
+    private val menuItems: List<MenuItem>,
     private val requireContext: Context
 ) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
-    private val itemClickListener: OnClickListener? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val binding = MenuItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,33 +27,41 @@ class MenuAdapter(
         holder.bind(position)
     }
 
-    override fun getItemCount(): Int = menuItemsName.size
+    override fun getItemCount(): Int = menuItems.size
 
     inner class MenuViewHolder(private val binding: MenuItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    itemClickListener?.onItemClick(position)
+                    openDetailActivity(position)
                 }
-                val intent = Intent(requireContext, DetailsActivity::class.java).apply {
-                    putExtra("MenuItemName", menuItemsName[position])
-                    putExtra("MenuItemImage", MenuImage[position])  // Đảm bảo thêm hình ảnh vào đây
-                }
-                requireContext.startActivity(intent)
             }
+        }
+
+        private fun openDetailActivity(position: Int) {
+            val menuItem = menuItems[position]
+            val intent = Intent(requireContext, DetailsActivity::class.java).apply {
+                putExtra("MenuItemName", menuItem.foodName)
+                putExtra("MenuItemImage", menuItem.foodImage)
+                putExtra("MenuItemDescription", menuItem.foodDescription)
+                putExtra("MenuItemIngredient", menuItem.foodIngredient)
+                putExtra("MenuItemPrice", menuItem.foodPrice)
+
+            }
+
+            requireContext.startActivity(intent)
         }
 
         fun bind(position: Int) {
+            val menuItem = menuItems[position]
             binding.apply {
-                menuFoodName.text = menuItemsName[position]
-                menuPrice.text = menuItemPrice[position]
-                menuImage.setImageResource(MenuImage[position])
+                menuFoodName.text = menuItem.foodName
+                menuPrice.text = menuItem.foodPrice
+                val uri = Uri.parse(menuItem.foodImage)
+                Glide.with(requireContext).load(uri).into(menuImage)
+
             }
         }
-    }
-
-    interface OnClickListener {
-        fun onItemClick(position: Int)
     }
 }

@@ -16,38 +16,19 @@ import com.example.ecofood.R
 import com.example.ecofood.adapter.MenuAdapter
 import com.example.ecofood.adapter.PopularAdapter
 import com.example.ecofood.databinding.FragmentHomeBinding
+import com.example.ecofood.model.MenuItem
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class HomeFragment : Fragment() {
-
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapter: MenuAdapter
-    private val originalMenuFoodName = listOf(
-        "Burger", "Sandwich", "Momo", "Item", "Sandwich", "Momo",
-        "Pizza", "Hot Dog", "Pasta", "Salad", "Sushi", "Taco"
-    )
-    private val originalMenuItemPrice = listOf(
-        "5$", "10$", "15$", "20$", "25$", "30$",
-        "12$", "8$", "18$", "9$", "22$", "6$"
-    )
-    private val originalMenuImage = listOf(
-        R.drawable.menu01,
-        R.drawable.menu02,
-        R.drawable.menu03,
-        R.drawable.menu04,
-        R.drawable.menu05,
-        R.drawable.menu06,
-        R.drawable.menu01,
-        R.drawable.menu02,
-        R.drawable.menu03,
-        R.drawable.menu04,
-        R.drawable.menu05,
-        R.drawable.menu06
-    )
+    private lateinit var database: FirebaseDatabase
+    private lateinit var menuItems: MutableList<MenuItem>
 
-    private val filteredMenuFoodName = mutableListOf<String>()
-    private val filteredMenuItemPrice = mutableListOf<String>()
-    private val filteredMenuImage = mutableListOf<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -63,8 +44,44 @@ class HomeFragment : Fragment() {
             val bottomSheetDialog = MenuBottomSheetFragment()
             bottomSheetDialog.show(parentFragmentManager,"Test")
         }
+        retrieveAndDisplayItem()
         return binding.root
     }
+
+    private fun retrieveAndDisplayItem() {
+        database = FirebaseDatabase.getInstance()
+        val foodRef: DatabaseReference = database.reference.child("Menu")
+        menuItems = mutableListOf()
+
+        foodRef.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (foodSnapShot in snapshot.children){
+                    val menuItem = foodSnapShot.getValue(MenuItem::class.java)
+                    menuItem?.let { menuItems.add(it) }
+                }
+                randomItem()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
+    private fun randomItem() {
+        val index = menuItems.indices.toList().shuffled()
+        val numItemToShow = 6
+        val subsetItem = index.take(numItemToShow).map{menuItems[it]}
+        setPopularItem(subsetItem)
+    }
+
+    private fun setPopularItem(subsetItem: List<MenuItem>) {
+        val adapter = MenuAdapter(subsetItem,requireContext())
+        binding.popularRecyclerView.layoutManager=LinearLayoutManager(requireContext())
+        binding.popularRecyclerView.adapter=adapter
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -87,25 +104,5 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(),itemMessage,Toast.LENGTH_SHORT).show()
             }
         })
-
-        adapter = MenuAdapter(
-            filteredMenuFoodName, filteredMenuItemPrice, filteredMenuImage,requireContext()
-        )
-        binding.popularRecyclerView.layoutManager=LinearLayoutManager(requireContext())
-        binding.popularRecyclerView.adapter=adapter
-        showAllMenu()
-    }
-    private fun showAllMenu() {
-        filteredMenuFoodName.clear()
-        filteredMenuItemPrice.clear()
-        filteredMenuImage.clear()
-
-        filteredMenuFoodName.addAll(originalMenuFoodName)
-        filteredMenuItemPrice.addAll(originalMenuItemPrice)
-        filteredMenuImage.addAll(originalMenuImage)
-        adapter.notifyDataSetChanged()
-    }
-    companion object {
-
     }
 }
