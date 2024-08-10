@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "526990031064",
+    "firebase_url": "https://food-app-0882024-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "food-app-0882024",
+    "storage_bucket": "food-app-0882024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526990031064:android:cc0abd45b21309f94abfad",
+        "android_client_info": {
+          "package_name": "com.example.adminecofood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526990031064-5vli9mb1i7kbi1v7agcef9ss02inu7on.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adminecofood",
+            "certificate_hash": "98468860a791e4558b524a7e84862d3231722a0c"
+          }
+        },
+        {
+          "client_id": "526990031064-m2jcbgacuutnb9l05262ncnmn2bol00b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adminecofood",
+            "certificate_hash": "8bb2b66754ccf9fafec50386ea9890e4e7555624"
+          }
+        },
+        {
+          "client_id": "526990031064-u9juou8tus63mblubj266pc5ecjb7paa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBigakd0fv4dkAKa6-1D9ZJjd3DtJ4T3Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526990031064-u9juou8tus63mblubj266pc5ecjb7paa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526990031064:android:e56e088bdb79767f4abfad",
+        "android_client_info": {
+          "package_name": "com.example.ecofood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526990031064-u9juou8tus63mblubj266pc5ecjb7paa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBigakd0fv4dkAKa6-1D9ZJjd3DtJ4T3Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526990031064-u9juou8tus63mblubj266pc5ecjb7paa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
