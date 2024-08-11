@@ -93,6 +93,7 @@ class CartAdapter(
         private fun decreaseQuantity(position: Int) {
             if (itemQuantities[position] > 1) {
                 itemQuantities[position]--
+                cartQuantity[position] = itemQuantities[position]
                 notifyItemChanged(position)
             }
         }
@@ -100,6 +101,7 @@ class CartAdapter(
         private fun increaseQuantity(position: Int) {
             if (itemQuantities[position] < 10) {
                 itemQuantities[position]++
+                cartQuantity[position] = itemQuantities[position]
                 notifyItemChanged(position)
             }
         }

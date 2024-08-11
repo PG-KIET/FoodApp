@@ -1,5 +1,6 @@
 package com.example.ecofood
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ecofood.databinding.ActivityPayOutBinding
@@ -27,6 +28,7 @@ class PayOutActivity : AppCompatActivity() {
     private lateinit var userId: String
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPayOutBinding.inflate(layoutInflater)
@@ -34,14 +36,52 @@ class PayOutActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference()
-
+        // set user data
         setUserData()
+
+        // get user details from Firebase
+
+        val intent = intent
+        foodItemName = intent.getStringArrayListExtra("FoodItemName") as ArrayList<String>
+        foodItemPrice = intent.getStringArrayListExtra("FoodItemPrice") as ArrayList<String>
+        foodItemImage= intent.getStringArrayListExtra("FoodItemImage") as ArrayList<String>
+        foodItemDescription = intent.getStringArrayListExtra("FoodItemDescription") as ArrayList<String>
+        foodItemIngredients = intent.getStringArrayListExtra("FoodItemIngredients") as ArrayList<String>
+        foodItemQuantities = intent.getIntegerArrayListExtra("FoodItemQuantities") as ArrayList<Int>
+
+        totalAmount = calculateTotalAmount().toString() + "$"
+        binding.totalAmount.setText(totalAmount)
+
 
         binding.placeButtonOrder.setOnClickListener {
             val bottomSheetDialog = congratBottomSheetFragMent()
             bottomSheetDialog.show(supportFragmentManager, "CongratBottomSheet")
         }
+        // Handle back button click
+        binding.buttonBackPayOut.setOnClickListener {
+            onBackPressed()  // This will navigate back to the previous fragment in the back stack
+        }
     }
+    private fun calculateTotalAmount(): String {
+        var totalAmount = 0.0
+        for (i in 0 until foodItemName.size) {
+            val price = foodItemPrice[i]
+            val lastChar = price.last()
+            val priceDoubleValue = if (lastChar == '$') {
+                price.dropLast(1).toDouble()
+            } else {
+                price.toDouble()
+            }
+            val quantity = foodItemQuantities[i]
+            totalAmount += priceDoubleValue * quantity
+        }
+        // Định dạng tổng số tiền với 2 chữ số thập phân
+        return String.format("%.2f", totalAmount)
+    }
+
+
+
+
 
     private fun setUserData() {
         val user = auth.currentUser
