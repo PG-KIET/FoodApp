@@ -1,18 +1,22 @@
 package com.example.adminecofood.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.os.Message
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.adminecofood.databinding.ItemPendingBinding
 
 class PendingOrderAdapter(
-    private val customerNames:ArrayList<String>,
-    private val quantity:ArrayList<String>,
-    private val foodImage:ArrayList<Int>,
-    private val context:Context)
+    private val context: Context,
+    private val customerNames:MutableList<String>,
+    private val quantity:MutableList<String>,
+    private val foodImage:MutableList<String>,
+    //private val itemClicked: OnT
+)
     : RecyclerView.Adapter<PendingOrderAdapter.PendingOrderViewHolder>() {
 
 
@@ -33,7 +37,10 @@ class PendingOrderAdapter(
             binding.apply {
                 customerName.text = customerNames[position]
                 Quantity.text = quantity[position]
-                orderFoodImage.setImageResource(foodImage[position])
+
+                val uriString = foodImage[position]
+                val uri = Uri.parse(uriString)
+                Glide.with(context).load(uri).into(orderFoodImage)
 
                 acceptButton.apply {
                     if (!isAccepted) {
