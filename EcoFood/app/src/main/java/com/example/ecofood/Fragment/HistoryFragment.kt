@@ -59,10 +59,12 @@ class HistoryFragment : Fragment() {
     private fun seeItemsRecentBuy() {
         listOfOrderItem.firstOrNull()?.let { recentBuy ->
             val intent = Intent(requireContext(), recentOrderItem::class.java)
-            intent.putExtra("RecentBuyOrderItem", recentBuy)
+            intent.putExtra("RecentBuyOrderItem", ArrayList(listOfOrderItem))
             startActivity(intent)
         }
     }
+
+
     //function to retrieve see items buy history
     private fun retrieveBuyHistory() {
         binding.recentBuyItem.visibility = View.INVISIBLE
@@ -141,3 +143,4 @@ class HistoryFragment : Fragment() {
         }
     }
 }
+

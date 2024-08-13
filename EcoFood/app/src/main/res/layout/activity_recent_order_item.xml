@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/coolvetica_rg"
         android:text="Recent Buy Item"
+        android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +34,7 @@
         app:layout_constraintTop_toTopOf="@+id/backButton" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewRecentBuy"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
