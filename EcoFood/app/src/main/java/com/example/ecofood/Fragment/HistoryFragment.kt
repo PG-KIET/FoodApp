@@ -9,11 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.ecofood.R
 import com.example.ecofood.adapter.BuyAgainAdapter
 import com.example.ecofood.databinding.FragmentHistoryBinding
 import com.example.ecofood.model.OrderDetails
-import com.example.ecofood.recentOrderItem
+import com.example.ecofood.RecentOrderItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -27,7 +26,7 @@ class HistoryFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var userId: String
-    private var listOfOrderItem: MutableList<OrderDetails> = mutableListOf()
+    private var listOfOrderItem: ArrayList<OrderDetails> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +57,8 @@ class HistoryFragment : Fragment() {
     //function to see items recent buy
     private fun seeItemsRecentBuy() {
         listOfOrderItem.firstOrNull()?.let { recentBuy ->
-            val intent = Intent(requireContext(), recentOrderItem::class.java)
-            intent.putExtra("RecentBuyOrderItem", ArrayList(listOfOrderItem))
+            val intent = Intent(requireContext(), RecentOrderItem::class.java)
+            intent.putExtra("RecentBuyOrderItem", listOfOrderItem)
             startActivity(intent)
         }
     }

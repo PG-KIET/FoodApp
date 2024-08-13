@@ -8,7 +8,7 @@ import com.example.ecofood.databinding.ActivityRecentOrderItemBinding
 import com.example.ecofood.model.OrderDetails
 
 
-class recentOrderItem : AppCompatActivity() {
+class RecentOrderItem : AppCompatActivity() {
     private val binding: ActivityRecentOrderItemBinding by lazy {
         ActivityRecentOrderItemBinding.inflate(layoutInflater)
     }
@@ -21,12 +21,6 @@ class recentOrderItem : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        // Initialize the lists
-        allFoodNames = arrayListOf()
-        allFoodImages = arrayListOf()
-        allFoodPrices = arrayListOf()
-        allFoodQuantities = arrayListOf()
-
         // Set up the back button
         binding.backButton.setOnClickListener {
             finish()
@@ -35,14 +29,15 @@ class recentOrderItem : AppCompatActivity() {
         // Retrieve and set the data from the intent
         // Retrieve and set the data from the intent
         val recentOrderItems =
-            intent.getSerializableExtra("RecentBuyOrderItem") as? ArrayList<OrderDetails>
-        recentOrderItems?.let { orderDetails ->
+            intent.getSerializableExtra("RecentBuyOrderItem") as ArrayList<OrderDetails>
+            recentOrderItems?.let { orderDetails ->
             if (orderDetails.isNotEmpty()) {
                 val recentOrderItem = orderDetails[0]
-                recentOrderItem.foodNames?.let { allFoodNames.addAll(it) }
-                recentOrderItem.foodImages?.let { allFoodImages.addAll(it) }
-                recentOrderItem.foodPrices?.let { allFoodPrices.addAll(it) }
-                recentOrderItem.foodQuantities?.let { allFoodQuantities.addAll(it) }
+                 allFoodNames = recentOrderItem.foodNames as ArrayList<String>
+                 allFoodImages = recentOrderItem.foodImages  as ArrayList<String>
+                 allFoodPrices = recentOrderItem.foodPrices as ArrayList<String>
+                 allFoodQuantities = recentOrderItem.foodQuantities as ArrayList<Int>
+
             }
         }
 
