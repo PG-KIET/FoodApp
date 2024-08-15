@@ -2,8 +2,9 @@ package com.example.adminecofood.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
-class OrderDetails() : Parcelable {
+class OrderDetails() : Serializable {
     var userUid: String? = null
     var userName: String? = null
     var foodNames: MutableList<String>? = null
@@ -30,11 +31,11 @@ class OrderDetails() : Parcelable {
         currentTime = parcel.readLong()
     }
 
-    override fun describeContents(): Int {
+    fun describeContents(): Int {
         TODO("Not yet implemented")
     }
 
-    override fun writeToParcel(dest: Parcel, flags: Int) {
+    fun writeToParcel(dest: Parcel, flags: Int) {
         TODO("Not yet implemented")
     }
 

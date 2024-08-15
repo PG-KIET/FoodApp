@@ -3,6 +3,7 @@ package com.example.adminecofood.adapter
 import android.content.Context
 import android.net.Uri
 import android.os.Message
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -15,10 +16,12 @@ class PendingOrderAdapter(
     private val customerNames:MutableList<String>,
     private val quantity:MutableList<String>,
     private val foodImage:MutableList<String>,
-    //private val itemClicked: OnT
+    private val itemClicked: OnItemClicked
 )
     : RecyclerView.Adapter<PendingOrderAdapter.PendingOrderViewHolder>() {
-
+    interface  OnItemClicked {
+        fun onItemClickedListener(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingOrderViewHolder {
        val binding = ItemPendingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -62,7 +65,9 @@ class PendingOrderAdapter(
 
                     }
                 }
-
+                itemView.setOnClickListener {
+                    itemClicked.onItemClickedListener(position)
+                }
             }
 
         }

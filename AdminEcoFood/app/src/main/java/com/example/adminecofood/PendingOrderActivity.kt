@@ -1,5 +1,6 @@
 package com.example.adminecofood
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,14 +16,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class PendingOrderActivity : AppCompatActivity() {
+class PendingOrderActivity : AppCompatActivity(), PendingOrderAdapter.OnItemClicked {
     private val binding: ActivityPendingOrderBinding by lazy {
         ActivityPendingOrderBinding.inflate(layoutInflater)
     }
     private var listOfName: MutableList<String> = mutableListOf()
     private var listOfTotalPrice: MutableList<String> = mutableListOf()
     private var listOfImageFirstFood: MutableList<String> = mutableListOf()
-    private var listOfOrderItem: MutableList<OrderDetails> = mutableListOf()
+    private var listOfOrderItem: ArrayList<OrderDetails> = arrayListOf()
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseOrderDetails: DatabaseReference
 
@@ -81,7 +82,15 @@ class PendingOrderActivity : AppCompatActivity() {
 
     private fun setAdapter() {
         binding.pendingRecyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = PendingOrderAdapter(this, listOfName, listOfTotalPrice, listOfImageFirstFood)
+        val adapter = PendingOrderAdapter(this, listOfName, listOfTotalPrice, listOfImageFirstFood,this)
         binding.pendingRecyclerView.adapter = adapter
     }
+
+    override fun onItemClickedListener(position: Int) {
+        val intent = Intent(this, OrderDetailsActivity::class.java)
+        val userOrderDetails = listOfOrderItem[position]
+        intent.putExtra("userOrderDetails", userOrderDetails)
+        startActivity(intent)
+    }
+
 }
