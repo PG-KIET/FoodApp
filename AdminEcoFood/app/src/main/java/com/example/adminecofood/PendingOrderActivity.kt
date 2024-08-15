@@ -51,7 +51,7 @@ class PendingOrderActivity : AppCompatActivity(), PendingOrderAdapter.OnItemClic
 
     private fun getOrdersDetails() {
         // retrieve order details from firebase database
-        databaseOrderDetails.addListenerForSingleValueEvent(/* listener = */ object :ValueEventListener{
+        databaseOrderDetails.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (orderSnapShot in snapshot.children){
                     val orderDetails = orderSnapShot.getValue(OrderDetails::class.java)
@@ -73,8 +73,8 @@ class PendingOrderActivity : AppCompatActivity(), PendingOrderAdapter.OnItemClic
             //add data to respective list for popular the recycler
             orderItem.userName?.let { listOfName.add(it) }
             orderItem.totalPrice?.let { listOfTotalPrice.add(it) }
-            orderItem.foodImages?.filterNot { it.isEmpty() }?.forEach {
-                listOfImageFirstFood.add(it)
+            orderItem.foodImages?.firstOrNull()?.let { firstImage ->
+                listOfImageFirstFood.add(firstImage)
             }
         }
         setAdapter()
