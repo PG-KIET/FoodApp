@@ -39,7 +39,7 @@ class CartAdapter(
         val userId = auth.currentUser?.uid?:""
         val cartItemnumber = cartItems.size
         itemQuantities = IntArray(cartItemnumber){1}
-        cartItemReference = database.reference.child("user").child(userId).child("CartItems")
+        cartItemReference = database.reference.child("user").child("CartItems")
     }
     companion object {
         private var itemQuantities: IntArray = intArrayOf()
