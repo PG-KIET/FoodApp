@@ -27,7 +27,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_marginStart="7dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="7dp"
@@ -40,18 +40,19 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/recentBuyItem"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/orderStatus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginEnd="24dp"
-                    app:cardBackgroundColor="#3F51B5"
+                    android:layout_marginEnd="48dp"
+                    app:cardBackgroundColor="#9B9BA2"
                     app:cardCornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.187" />
 
                 <TextView
                     android:id="@+id/buyAgainFoodName"
@@ -87,6 +88,24 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/menu04" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/colorbutton2"
+                    android:fontFamily="@font/coolvetica_rg_it"
+                    android:text="Received"
+                    android:visibility="invisible"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/orderStatus"
+                    app:layout_constraintHorizontal_bias="0.515"
+                    app:layout_constraintStart_toStartOf="@+id/orderStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/orderStatus"
+                    app:layout_constraintVertical_bias="0.352" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
