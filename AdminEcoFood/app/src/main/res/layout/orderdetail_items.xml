@@ -52,12 +52,12 @@
                 app:layout_constraintTop_toTopOf="@+id/cardView9" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/TotalPay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Total Pay"
+                android:text="Quantity"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView9"
@@ -72,8 +72,8 @@
                 android:text="8"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView16"
-                app:layout_constraintStart_toEndOf="@+id/textView16" />
+                app:layout_constraintBottom_toBottomOf="@+id/TotalPay"
+                app:layout_constraintStart_toEndOf="@+id/TotalPay" />
 
             <TextView
                 android:id="@+id/foodPrice"

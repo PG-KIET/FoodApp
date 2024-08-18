@@ -1,8 +1,10 @@
 package com.example.ecofood.Fragment
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +28,7 @@ class HistoryFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var userId: String
-    private var listOfOrderItem: ArrayList<OrderDetails> = arrayListOf()
+    private var  listOfOrderItem: ArrayList<OrderDetails> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,11 @@ class HistoryFragment : Fragment() {
         // Retrieve and Display The User Order History
         retrieveBuyHistory()
 
+        binding.received.setOnClickListener {
+
+            updateOrderStatus()
+        }
+
         // recent buy button click
         binding.recentBuyItem.setOnClickListener {
             seeItemsRecentBuy()
@@ -54,6 +61,13 @@ class HistoryFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun updateOrderStatus() {
+        val itemPushKey = listOfOrderItem.last().itemPushKey
+        val completeOrderReference = database.reference.child("CompletedOrder").child(itemPushKey!!)
+        completeOrderReference.child("paymentReceived").setValue(true)
+    }
+
     //function to see items recent buy
     private fun seeItemsRecentBuy() {
         listOfOrderItem.reversed().firstOrNull()?.let { recentBuy ->
@@ -107,8 +121,12 @@ class HistoryFragment : Fragment() {
                 Glide.with(requireContext()).load(uri).into(buyAgainFoodImage)
 
                 listOfOrderItem.reverse()
-                if (listOfOrderItem.isNotEmpty()) {
 
+                val isOrderIsAccept = listOfOrderItem.last().orderAccepted
+                Log.d("Accept", "setDataInRecentBuyItem: $isOrderIsAccept")
+                if (isOrderIsAccept){
+                    orderStatus.background.setTint(Color.GREEN)
+                    received.visibility = View.VISIBLE
                 }
             }
         }
