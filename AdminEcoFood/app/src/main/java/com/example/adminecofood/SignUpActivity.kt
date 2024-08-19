@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var userName: String
-    private lateinit var nameOfRestaurent: String
+    private lateinit var nameOfRestaurant: String
     private lateinit var email: String
     private lateinit var password: String
     private lateinit var auth: FirebaseAuth
@@ -46,11 +46,11 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.createUserButton.setOnClickListener {
             userName = binding.name.text.toString().trim()
-            nameOfRestaurent = binding.restaurantName.text.toString().trim()
+            nameOfRestaurant = binding.restaurantName.text.toString().trim()
             email = binding.mail.text.toString().trim()
             password = binding.password.text.toString().trim()
 
-            if (userName.isBlank() || nameOfRestaurent.isBlank() || email.isBlank() || password.isBlank()) {
+            if (userName.isBlank() || nameOfRestaurant.isBlank() || email.isBlank() || password.isBlank()) {
                 Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show()
             } else {
                 createAccount(email, password)
@@ -85,11 +85,11 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun saveUserData() {
         userName = binding.name.text.toString().trim()
-        nameOfRestaurent = binding.restaurantName.text.toString().trim()
+        nameOfRestaurant = binding.restaurantName.text.toString().trim()
         email = binding.mail.text.toString().trim()
         password = binding.password.text.toString().trim()
 
-        val user = UserModel(userName, nameOfRestaurent, email, password)
+        val user = UserModel(userName, nameOfRestaurant, email, password)
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
         database.child("user").child(userId).setValue(user).addOnCompleteListener { task ->

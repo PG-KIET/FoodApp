@@ -108,21 +108,21 @@ class PayOutActivity : AppCompatActivity() {
         cartItemReference.removeValue()
     }
 
-    private fun calculateTotalAmount(): String {
-        var totalAmount = 0.0
+    private fun calculateTotalAmount(): Int {
+        var totalAmount = 0
         for (i in 0 until foodItemName.size) {
             val price = foodItemPrice[i]
             val lastChar = price.last()
             val priceDoubleValue = if (lastChar == '$') {
-                price.dropLast(1).toDouble()
+                price.dropLast(1).toInt()
             } else {
-                price.toDouble()
+                price.toInt()
             }
             val quantity = foodItemQuantities[i]
             totalAmount += priceDoubleValue * quantity
         }
-        // Định dạng tổng số tiền với 2 chữ số thập phân
-        return String.format("%.2f", totalAmount)
+
+        return totalAmount
     }
 
 

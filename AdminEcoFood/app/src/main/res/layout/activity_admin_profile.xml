@@ -254,14 +254,15 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveInfoBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/colorbutton3"
         android:fontFamily="@font/roboto_bolditalic"
         android:padding="5dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="64dp"
         android:text="Save Information"
         android:textAllCaps="false"
         android:textSize="20sp"
