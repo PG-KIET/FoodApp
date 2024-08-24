@@ -83,19 +83,19 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{ task ->
             if (task.isSuccessful){
                 val user = auth.currentUser
-                Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
                 updateUi(user)
             }
             else{
                 auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{ task ->
                     if (task.isSuccessful){
                         val user = auth.currentUser
-                        Toast.makeText(this, " Create User and Login Successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Tạo người dùng và đăng nhập thành công", Toast.LENGTH_SHORT).show()
                         saveUserData()
                         updateUi(user)
                     }
                     else{
-                        Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Xác thực không thành công", Toast.LENGTH_SHORT).show()
                         Log.d( "Account", "CreateUserAccount: Authentication failed", task.exception)
                     }
                 }

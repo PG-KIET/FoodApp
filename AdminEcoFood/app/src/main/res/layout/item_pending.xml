@@ -77,15 +77,15 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/acceptButton"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Accept"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:elevation="8dp"
-                android:fontFamily="@font/roboto_mediumitalic"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="22dp"
                 android:background="@drawable/colorbutton2"
+                android:elevation="8dp"
+                android:fontFamily="@font/roboto_mediumitalic"
+                android:text="Chấp Nhận"
+                android:textAllCaps="false"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

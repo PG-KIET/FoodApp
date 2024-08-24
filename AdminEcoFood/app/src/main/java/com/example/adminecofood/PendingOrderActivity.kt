@@ -120,10 +120,10 @@ class PendingOrderActivity : AppCompatActivity(), PendingOrderAdapter.OnItemClic
             .child(dispatchItemPushKey)
         orderDetailsItemReference.removeValue()
             .addOnSuccessListener {
-                Toast.makeText(this, "OrderIs is Dispatched", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "OrderIs đã được gửi đi", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
-                Toast.makeText(this, "OrderIs is not Dispatched", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "OrderIs không được gửi đi", Toast.LENGTH_SHORT).show()
             }
     }
 
