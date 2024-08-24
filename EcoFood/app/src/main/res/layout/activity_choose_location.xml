@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="52dp"
-        android:text="Choose your location"
+        android:text="Chọn vị trí của bạn"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -39,10 +39,9 @@
             android:id="@+id/listOfLocation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Choose Location"
             android:fontFamily="@font/amiko_semibold"
             android:inputType="none"
-           />
+            android:text="Chọn vị trí" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -53,7 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="60dp"
         android:fontFamily="@font/amiko_semibold"
-        android:text="To provide you with the best binding experience, we need your permission to access your device's location. By enabling location services, we can offer personalized restaurant recommendations, accurate delivery estimates, and ensure a seamlesss food delivery experience"
+        android:text="Để cung cấp cho bạn trải nghiệm liên kết tốt nhất, chúng tôi cần bạn cho phép truy cập vị trí thiết bị của bạn. Bằng cách bật dịch vụ vị trí, chúng tôi có thể cung cấp các đề xuất nhà hàng được cá nhân hóa, ước tính giao hàng chính xác và đảm bảo trải nghiệm giao đồ ăn liền mạch"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

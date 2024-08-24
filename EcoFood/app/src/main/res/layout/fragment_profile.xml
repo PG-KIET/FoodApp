@@ -15,16 +15,16 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/textviewshape"
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textviewshape"
+            android:elevation="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:elevation="5dp"
-            android:layout_marginTop="20dp"
-            android:text="Edit Profile" />
+            android:text="Chỉnh sửa hồ sơ" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Name"
+                android:text="Tên"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -73,10 +73,10 @@
                 android:layout_width="30dp"
                 android:layout_height="56dp"
                 android:layout_marginLeft="8dp"
-                android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Address"
+                android:gravity="center_vertical"
+                android:text="Địa chỉ"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -141,7 +141,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Phone"
+                android:text="Số điện thoại"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -166,6 +166,6 @@
         android:background="@drawable/textviewshape"
         android:elevation="5dp"
         android:padding="5dp"
-        android:text="Save Information" />
+        android:text="Lưu thông tin" />
 
 </FrameLayout>

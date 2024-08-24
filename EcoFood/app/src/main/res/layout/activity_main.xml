@@ -9,14 +9,14 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="297dp"
-        android:layout_height="38dp"
+        android:layout_width="310dp"
+        android:layout_height="40dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/coolvetica_rg"
-        android:text="Explore Your Favorite Food"
+        android:text="Khám phá món ăn yêu thích của bạn"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

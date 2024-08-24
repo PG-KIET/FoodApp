@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/coolvetica_rg"
-        android:text="Edit"
+        android:text="Sửa"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Name"
+                android:text="Tên"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -91,10 +91,10 @@
                 android:layout_width="30dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="8dp"
-                android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Address"
+                android:gravity="center_vertical"
+                android:text="Địa chỉ"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -126,7 +126,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Phone"
+                android:text="Số điện thoại"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -158,7 +158,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Payment Method"
+                android:text="Phương thức thanh toán"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/coolvetica_condensed_rg"
-                android:text="Total Amount"
+                android:text="Tổng số tiền"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 

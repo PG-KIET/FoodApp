@@ -33,7 +33,7 @@
                 android:elevation="8dp"
                 android:fontFamily="@font/coolvetica_rg"
                 android:gravity="center"
-                android:text="Add To Cart"
+                android:text="Thêm giỏ hàng"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
