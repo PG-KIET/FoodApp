@@ -61,7 +61,7 @@ class AddItemActivity : AppCompatActivity() {
                 Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show()
             } else {
                 uploadData()
-                Toast.makeText(this, "thêm sản phẩm thành công", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
@@ -92,23 +92,23 @@ class AddItemActivity : AppCompatActivity() {
                     newItemKey?.let {
                         key ->
                         menuRef.child(key).setValue(newItem).addOnSuccessListener {
-                            Toast.makeText(this, "tải dữ liệu lên thành công", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Tải dữ liệu lên thành công", Toast.LENGTH_SHORT).show()
 
                         }
                             .addOnFailureListener{
-                                Toast.makeText(this, "tải dữ liệu lên thất bại", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Tải dữ liệu lên thất bại", Toast.LENGTH_SHORT).show()
                             }
                     }
                 }
 
             }
                 .addOnFailureListener{
-                    Toast.makeText(this, "tải ảnh lên thất bại", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Tải ảnh lên thất bại", Toast.LENGTH_SHORT).show()
                 }
 
         }
         else{
-            Toast.makeText(this, "vui lòng chọn ảnh", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Vui lòng chọn ảnh", Toast.LENGTH_SHORT).show()
         }
     }
 

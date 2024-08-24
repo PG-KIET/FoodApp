@@ -29,9 +29,9 @@ class DeliveryAdapter(private val customerNames:MutableList<String>, private val
             binding.apply {
                 customerName.text = customerNames[position]
                 if ( moneyStatus[position] == true) {
-                    statusMoney.text ="Received"
+                    statusMoney.text ="Đã nhận"
                 }else {
-                    statusMoney.text ="NotReceived"
+                    statusMoney.text ="Không nhận được"
                 }
 
                 val colorMap = mapOf(

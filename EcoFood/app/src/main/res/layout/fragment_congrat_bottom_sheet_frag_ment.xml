@@ -19,11 +19,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/coolvetica_condensed_rg"
-            android:text="Congrats Your Order Placed"
+            android:padding="16dp"
+            android:text="Xin chúc mừng đơn hàng của bạn đã được đặt"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:padding="16dp"/>
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -40,10 +40,10 @@
             android:background="@drawable/textviewshape"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:text="Go Home"
-            android:textColor="@color/black"
             android:padding="12dp"
-            android:textAllCaps="false" />
+            android:text="Đi đến trang chủ"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </FrameLayout>

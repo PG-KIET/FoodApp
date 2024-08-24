@@ -49,21 +49,21 @@ class PendingOrderAdapter(
 
                 acceptButton.apply {
                     if (!isAccepted) {
-                        text = "Accept"
+                        text = "Chấp nhận"
                     }
                     else
-                        text = "Dispatch"
+                        text = "Giao hàng"
                     setOnClickListener{
                         if (!isAccepted) {
-                            text = "Dispatch"
+                            text = "Giao hàng"
                             isAccepted = true
-                            showToast("Order is accepted")
+                            showToast("Đơn hàng đã được chấp nhận")
                             itemClicked.onAcceptClickedListener(position)
                         }
                         else{
                             customerNames.removeAt(adapterPosition)
                             notifyItemRemoved(adapterPosition)
-                            showToast("Order is dispatched")
+                            showToast("Đơn hàng đang được gửi đi")
                             itemClicked.onDispatchClickedListener(position)
                         }
 

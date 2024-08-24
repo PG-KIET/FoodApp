@@ -26,7 +26,7 @@
         android:layout_width="368dp"
         android:layout_height="45dp"
         android:fontFamily="@font/amiko_semibold"
-        android:text="Delivered Favourite Food"
+        android:text="Giao món ăn yêu thích"
         android:textAlignment="center"
         android:textColor="#070707"
         android:textColorHint="#131313"

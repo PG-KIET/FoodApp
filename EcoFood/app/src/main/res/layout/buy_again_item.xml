@@ -33,7 +33,7 @@
                 android:background="@drawable/textviewshape"
                 android:elevation="20dp"
                 android:fontFamily="@font/coolvetica_rg"
-                android:text="Buy Again"
+                android:text="Mua lại"
                 app:cardBackgroundColor="#3F51B5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -51,7 +51,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/coolvetica_rg"
-        android:text="Popular"
+        android:text="Phổ biến"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -65,8 +65,7 @@
         android:elevation="5dp"
         android:fontFamily="@font/coolvetica_rg"
         android:gravity="center"
-        android:textSize="16sp"
-        android:text="View Menu"
+        android:text="Mua gần đây"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"

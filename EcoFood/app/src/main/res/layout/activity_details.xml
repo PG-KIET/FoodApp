@@ -23,15 +23,15 @@
         android:id="@+id/detailsFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/coolvetica_condensed_rg"
-        android:text="Food Name"
+        android:text="Tên món ăn"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBackDetails"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBackDetails" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
@@ -55,14 +55,14 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/coolvetica_rg"
-        android:text="Short Description"
+        android:text="Mô tả ngắn gọn"
         android:textColor="@color/black"
         android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@+id/cardView4"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
     <TextView
         android:id="@+id/description"
@@ -81,14 +81,14 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/coolvetica_rg"
-        android:text="Ingredient"
+        android:text="Nguyên liệu"
         android:textColor="@color/black"
         android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@+id/description"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
         android:id="@+id/ingredient"
