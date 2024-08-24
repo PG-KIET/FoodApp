@@ -78,7 +78,7 @@ class CartAdapter(
                 minusButton.setOnClickListener {
                     decreaseQuantity(position)
                 }
-                pluseButton.setOnClickListener {
+                plusButton.setOnClickListener {
                     increaseQuantity(position)
                 }
                 deleteButton.setOnClickListener {

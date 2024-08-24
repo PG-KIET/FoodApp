@@ -23,8 +23,8 @@
 
             <ImageButton
                 android:id="@+id/buttonBack"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="8dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
@@ -39,7 +39,7 @@
                 android:gravity="center"
                 android:text="Order Details"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="32sp" />
 
             <!-- Add an empty view to balance the weight -->
             <View

@@ -25,8 +25,8 @@
 
             <ImageButton
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="28dp"
                 android:background="@android:color/transparent"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bolditalic"
                 android:text="ADD ITEM"
-                android:textSize="40sp"
+                android:textSize="32sp"
                 app:layout_constraintBottom_toBottomOf="@+id/backButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/backButton"
@@ -182,6 +182,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:padding="8dp"
                 android:hint="Hãy nhập nguyên liệu"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/textView14"

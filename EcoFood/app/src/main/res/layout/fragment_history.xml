@@ -46,13 +46,13 @@
                     android:id="@+id/orderStatus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginEnd="48dp"
+                    android:layout_marginEnd="40dp"
                     app:cardBackgroundColor="#9B9BA2"
                     app:cardCornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.187" />
+                    app:layout_constraintVertical_bias="0.2" />
 
                 <TextView
                     android:id="@+id/buyAgainFoodName"
@@ -92,8 +92,9 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/received"
                     android:layout_width="89dp"
-                    android:layout_height="29dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="16dp"
+                    android:textSize="14sp"
                     android:background="@drawable/textviewshape"
                     android:elevation="20dp"
                     android:fontFamily="@font/coolvetica_rg"
@@ -102,12 +103,10 @@
                     app:cardBackgroundColor="#3F51B5"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/orderStatus"
-                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintHorizontal_bias="0.384"
                     app:layout_constraintStart_toStartOf="@+id/orderStatus"
                     app:layout_constraintTop_toBottomOf="@+id/orderStatus"
-                    app:layout_constraintVertical_bias="0.555"
-                    />
-
+                    app:layout_constraintVertical_bias="0.466" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
