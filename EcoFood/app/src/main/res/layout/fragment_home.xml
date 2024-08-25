@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="54dp"
+        android:layout_width="60dp"
         android:layout_height="23dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
@@ -59,14 +59,14 @@
 
     <TextView
         android:id="@+id/viewAllMenu"
-        android:layout_width="100dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="140dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/textviewshape"
         android:elevation="5dp"
         android:fontFamily="@font/coolvetica_rg"
         android:gravity="center"
-        android:text="Mua gần đây"
+        android:text="Danh sách thực đơn"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
