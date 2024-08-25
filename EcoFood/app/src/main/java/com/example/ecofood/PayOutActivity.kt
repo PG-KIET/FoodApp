@@ -51,7 +51,7 @@ class PayOutActivity : AppCompatActivity() {
         foodItemIngredients = intent.getStringArrayListExtra("FoodItemIngredients") as ArrayList<String>
         foodItemQuantities = intent.getIntegerArrayListExtra("FoodItemQuantities") as ArrayList<Int>
 
-        totalAmount = calculateTotalAmount().toString() + "$"
+        totalAmount = calculateTotalAmount().toString() + " VNĐ"
         binding.totalAmount.setText(totalAmount)
 
 
@@ -109,23 +109,14 @@ class PayOutActivity : AppCompatActivity() {
     }
 
     private fun calculateTotalAmount(): Int {
-        var totalAmount = 0
+        var totalAmount: Int = 0
         for (i in 0 until foodItemName.size) {
-            val price = foodItemPrice[i]
-            val lastChar = price.last()
-            val priceDoubleValue = if (lastChar == '$') {
-                price.dropLast(1).toInt()
-            } else {
-                price.toInt()
-            }
+            val price = foodItemPrice[i].replace(".", "").replace(" VNĐ", "").toInt()
             val quantity = foodItemQuantities[i]
-            totalAmount += priceDoubleValue * quantity
+            totalAmount += price * quantity
         }
-
         return totalAmount
     }
-
-
 
 
 

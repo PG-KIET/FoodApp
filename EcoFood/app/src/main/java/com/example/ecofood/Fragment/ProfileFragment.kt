@@ -77,10 +77,10 @@ class ProfileFragment : Fragment() {
             )
             userReference.setValue(userData)
             .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Cap nhat thong tin thanh cong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
-                Toast.makeText(requireContext(), "Cap nhat thong tin that bai", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Cập nhật thông tin thất bại", Toast.LENGTH_SHORT).show()
             }
         }
     }

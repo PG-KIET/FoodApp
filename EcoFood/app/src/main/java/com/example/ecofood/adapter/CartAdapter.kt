@@ -27,7 +27,7 @@ class CartAdapter(
     private val context: Context,
     private val cartItems: MutableList<String>,
     private val cartItemPrices: MutableList<String>,
-    private var cartImages: MutableList<String>, // Sử dụng danh sách Int cho hình ảnh
+    private var cartImages: MutableList<String>,
     private var cartDescriptions: MutableList<String>,
     private val cartQuantity:MutableList<Int>,
     private var cartIngredients: MutableList<String>
@@ -124,13 +124,13 @@ class CartAdapter(
                     cartQuantity.removeAt(position)
                     cartItemPrices.removeAt(position)
                     cartIngredients.removeAt(position)
-                    Toast.makeText(context,"Item Deleted",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"Xóa thành công",Toast.LENGTH_SHORT).show()
                     // cập nhat itemQuantities
                     itemQuantities = itemQuantities.filterIndexed { index, i -> index != position }.toIntArray()
                     notifyItemRemoved(position)
                     notifyItemChanged(position, cartItems.size)
                 }.addOnFailureListener {
-                    Toast.makeText(context,"Failed to Delete",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"Xóa thất bại",Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -75,16 +75,16 @@ class SignActivity : AppCompatActivity() {
                 auth.signInWithCredential(credential)
                     .addOnCompleteListener { authTask ->
                         if (authTask.isSuccessful) {
-                            Toast.makeText(this, "Successfully signed in with Google", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Đăng nhập thành công với Google", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, MainActivity::class.java))
 //                            updateUi(authTask.result?.user)
                             finish()
                         } else {
-                            Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Đăng nhập Google không thành công", Toast.LENGTH_SHORT).show()
                         }
                     }
             } else {
-                Toast.makeText(this, "Google Sign-in failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Đăng nhập Google không thành công", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -75,7 +75,7 @@ class CartFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, "Order making failed. Please try again", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Đặt hàng không thành công. Vui lòng thử lại", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -140,7 +140,7 @@ class CartFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, "Data not fetched", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Dữ liệu chưa được lấy", Toast.LENGTH_SHORT).show()
             }
         })
     }

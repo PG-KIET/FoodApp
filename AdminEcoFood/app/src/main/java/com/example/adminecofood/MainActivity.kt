@@ -2,6 +2,7 @@ package com.example.adminecofood
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -73,55 +74,67 @@ class MainActivity : AppCompatActivity() {
     private fun wholeTimeEarning() {
         var listOfTotalPay = mutableListOf<Int>()
         completedOrderReference = FirebaseDatabase.getInstance().reference.child("CompletedOrder")
-        completedOrderReference.addListenerForSingleValueEvent(object : ValueEventListener {
+        completedOrderReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for( orderSnapshot in snapshot.children){
-                    var completeOrder = orderSnapshot.getValue(OrderDetails::class.java)
-                    completeOrder?.totalPrice?.replace("$", "")?.toIntOrNull()
-                        ?.let { i ->
-                            listOfTotalPay.add(i)
-                        }
+                listOfTotalPay.clear()
+                for (orderSnapshot in snapshot.children) {
+                    val completeOrder = orderSnapshot.getValue(OrderDetails::class.java)
+
+                    if (completeOrder != null) {
+                        println("Order ID: ${completeOrder.itemPushKey}, Payment Received: ${completeOrder.paymentReceived}")
+                    }
+
+                    if (completeOrder?.paymentReceived == true) {
+                        completeOrder.totalPrice
+                            ?.replace(" VNĐ", "")
+                            ?.replace(".", "")
+                            ?.toIntOrNull()
+                            ?.let { i ->
+                                listOfTotalPay.add(i)
+                            }
+                    }
                 }
-                binding.wholeTime.text = listOfTotalPay.sum().toString() + "$"
+                binding.wholeTime.text = listOfTotalPay.sum().toString() + " VNĐ"
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@MainActivity, "Có lỗi xảy ra: ${error.message}", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 
+
+
+
+
     private fun completeOrder() {
         val completeOrderReference = database.reference.child("CompletedOrder")
-        var completeOrderItemCount = 0
-        completeOrderReference.addListenerForSingleValueEvent(object : ValueEventListener {
+        completeOrderReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                completeOrderItemCount = snapshot.childrenCount.toInt()
+                val completeOrderItemCount = snapshot.childrenCount.toInt()
                 binding.completeOrder.text = completeOrderItemCount.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@MainActivity, "Có lỗi xảy ra: ${error.message}", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
+
 
     private fun pendingOrder() {
         database = FirebaseDatabase.getInstance()
         val pendingOrderReference = database.reference.child("OrderDetails")
-        var pendingOrderItemCount = 0
-        pendingOrderReference.addListenerForSingleValueEvent(object : ValueEventListener {
+        pendingOrderReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                pendingOrderItemCount = snapshot.childrenCount.toInt()
+                val pendingOrderItemCount = snapshot.childrenCount.toInt()
                 binding.pendingOrder.text = pendingOrderItemCount.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@MainActivity, "Có lỗi xảy ra: ${error.message}", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
+
 }

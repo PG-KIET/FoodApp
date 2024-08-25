@@ -35,7 +35,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -98,6 +98,7 @@
                 android:id="@+id/pendingOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="30"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -118,7 +119,7 @@
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="61dp"
-                android:layout_height="49dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="8dp"
                 android:text="Hoàn tất\nĐặt hàng"
@@ -131,6 +132,7 @@
                 android:id="@+id/completeOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="30"
                 android:textColor="#FFC107"
                 android:textSize="20sp"
@@ -149,12 +151,13 @@
 
             <TextView
                 android:id="@+id/textView11"
-                android:layout_width="109dp"
-                android:layout_height="46dp"
+                android:layout_width="69dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="8dp"
-                android:text="Toàn bộ \n thời gian"
+                android:text="Tổng\nthu nhập"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toEndOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
@@ -162,9 +165,12 @@
                 android:id="@+id/wholeTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30$"
+                android:layout_marginTop="8dp"
+                android:maxWidth="110dp"
+                android:text="3000000 VNĐ"
+                android:textAlignment="center"
                 android:textColor="#4CAF50"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView11"
                 app:layout_constraintStart_toStartOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />

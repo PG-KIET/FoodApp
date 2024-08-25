@@ -57,10 +57,10 @@ class DetailsActivity : AppCompatActivity() {
         val carItem = CartItem(foodName.toString(),foodPrice.toString(),foodDescription.toString(),foodImage.toString(),1)
 
         database.child("user").child(userId).child("CartItems").push().setValue(carItem).addOnSuccessListener {
-            Toast.makeText(this, "Them san pham vao gio hang thanh cong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Thêm sản phẩm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show()
         }
             .addOnFailureListener{
-                Toast.makeText(this, "Them san pham vao gio hang that bai", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Thêm sản phẩm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show()
             }
 
     }

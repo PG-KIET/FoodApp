@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bolditalic"
         android:text="ĐƠN HÀNG ĐANG CHỜ XỬ LÝ"
-        android:textSize="25sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backButton"

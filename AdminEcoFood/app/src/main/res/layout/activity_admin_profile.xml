@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Edit Your Profile"
+        android:text="Chỉnh sửa hồ sơ của bạn"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/backButton"
         app:layout_constraintTop_toBottomOf="@id/textView12" />
@@ -53,7 +53,7 @@
         android:drawableLeft="@drawable/edit"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:text="Chỉnh sửa hồ sơ của bạn"
+        android:text="Chỉnh sửa"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView12" />
